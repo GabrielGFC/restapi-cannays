@@ -1,9 +1,0 @@
-{
-  "_id": "5d31d9d0fd4fc002e68d8f93",
-  "name" : "John DOE",
-  "username" : "jndoe",
-  "email" : "user@example.com",
-  "gender": "M",
-  "confirmed": true,
-  "avatar": null
-}

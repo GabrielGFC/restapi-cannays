@@ -1,13 +1,13 @@
 import path from 'path';
-import * as fs from 'fs';
+import fs from 'fs';
 import { createLogger, format, transports, Logger } from 'winston';
 
-import * as config from '../config';
+import config from '../config';
 
 const { combine, timestamp, printf }: any = format;
 const t: any = require('winston-daily-rotate-file');
 
-const logFileDir: string = path.join(__dirname, config.LOG_FILE_DIR);
+const logFileDir: string = path.join(__dirname, config.upload.avatarPath);
 
 if (!fs.existsSync(logFileDir)) {
 	fs.mkdirSync(logFileDir);
@@ -22,12 +22,9 @@ const transport: any = new (t)({
 	maxFiles: '14d',
 });
 
-/* transport.on('rotate', (oldFilename: string, newFilename: string) => {
-	// do something fun
-});*/
 
 const myFormat: any = printf(({ level, message, timestamp }: any) => {
-	return `${timestamp} ${level}: ${message}`; // `${timestamp}[${level}]- ${message}`;
+	return `${timestamp} ${level}: ${message}`;
 });
 
 const logger: Logger = createLogger({

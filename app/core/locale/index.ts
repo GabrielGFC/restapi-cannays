@@ -1,7 +1,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { Locales } from '../types';
+import { Locales } from './types/LocaleTypes';
 
 /**
  * This class is responsible for internationalization
@@ -17,7 +17,7 @@ class Locale {
    * @private
    * @static
    * */
-	private static availables: string[] = ['en', 'fr'];
+	private static availables: string[] = ['en'];
 
 	/**
    * @private

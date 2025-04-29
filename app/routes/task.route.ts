@@ -25,15 +25,16 @@ class TaskRoute {
 	routes(): void {
 		const prefix: string = `${API_BASE}tasks`;
 
+		this.router.get(`${prefix}`, TaskController.all);
+
+		this.router.get(`${prefix}/:id`, TaskController.one);
+
 		this.router.post(`${prefix}/create`, taskValidator.validate(task.createTask), TaskController.create);
 
 		this.router.put(`${prefix}/:id`, taskValidator.validate(task.updateTask), TaskController.update);
 
 		this.router.delete(`${prefix}/:id`, TaskController.destroy);
 
-		this.router.get(`${prefix}`, TaskController.all);
-
-		this.router.get(`${prefix}/:id`, TaskController.one);
 	}
 }
 

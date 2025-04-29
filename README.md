@@ -1,91 +1,100 @@
-# Node REST API Starter
+#
 
-A starter project to build REST API in node.js with Typescript, Express Framework and MongoDB
-## Contents
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Documentation](#documentation)
-- [Internationalization](#internationalization)
-- [Docker](#docker)
-- [Test](#test)
+Um projeto base moderno para construção de APIs RESTful utilizando Node.js, TypeScript, Express e PostgreSQL.
 
-## Features
-This features are available in this project
+---
 
-- **User Registration:** Register with the email confirmation sent
-- **Password reset**
-- **Authentication with JWT:** Generate Access token and Refresh token the login
-- **Logger:** Log info/error message into a log file
-- **Internationalization:** API can respond with the message in the language provided. French and English are available
-- **Socket.io:** Socket communication
-- **Transformer:** Customize the data returned by the API
+## Índice
 
-## Prerequisites
-- Node.js
-- MongoDB
-- Redis
+- [1. Pré-requisitos](#1-pré-requisitos)
+- [2. Instalação](#2-instalação)
+- [3. Configuração do Ambiente](#3-configuração-do-ambiente)
+- [4. Rodando o Projeto](#4-rodando-o-projeto)
+- [5. Docker](#5-docker)
+- [6. Scripts](#6-scripts)
+- [7. Autor](#7-autor)
 
-## Installation
-- Clone the repository
+
+## 1. Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- PostgreSQL
+- Yarn
+
+
+## 2. Instalação
+
+Clone o repositório:
+
 ```bash
-$ git clone https://github.com/tericcabrel/node-restapi-starter.git [project_name]
+git clone https://github.com/GabrielGFC/restapi-cannays.git
+cd restapi-cannays
 ```
 
-- Install dependencies
-```bash
-$ cd [project_name]
-$ yarn
-```
-- Create the configuration file and update with your local config
-```bash
-$ cp .env.example .env
-$ nano .env
-```
-- Start Application
-```bash
-$ yarn start
-```
-The application will be launched by [Nodemon](https://nodemon.com) so it's will restart automatically when a file changed
+Instale as dependências:
 
-## Documentation
-[ RESTful API Modeling Language (RAML)](https://raml.org/) is used to design our API documentation
-An editor is provide to write our specification after we use a command to generate the documentation
-- Launch the Editor
 ```bash
-$ yarn api-designer
-```
-Open the browser and navigate to http://localhost:4000
-
-- Import API specification <br>
-The documentation for the available endpoints have already wrote.
-We just have to continue by adding our own. For that, you need to:<br>
-1- Zip the content of the folder `public/apidoc`<br>
-2- Import the zip in the API designer<br>
-3- Add or edit specification
-
-- Generate API Documentation
-```bash
-$ yarn apidoc
-```
-Open the browser and navigate to http://localhost:7010/api/documentation
-
-## Internationalization
-The API can send response in the based on the language of the client.
-For that, you need to set the language in the header of the request
-````json
-{ "Accept-Header":  "fr"} 
-````
-API will respond in french. Only french and english are available but it's easy to add another language 
-
-## Docker
-To run the project with docker, just run
-```bash
-$ docker-compose up --build
+yarn install
 ```
 
-## Test
-Mocha and Chai is used to write unit test.
-```bash
-$ yarn test
+
+## 3. Configuração do Ambiente
+
+Crie um arquivo `.env` com base no exemplo abaixo:
+
+```dotenv
+PORT=3000
+DATABASE_URL=postgresql://usuario:senha@localhost:5432/nome_do_banco
+JWT_SECRET=uma_chave_secreta_segura
 ```
+
+
+## 4. Rodando o Projeto
+
+Modo desenvolvimento:
+
+```bash
+yarn dev
+```
+
+Build de produção:
+
+```bash
+yarn build
+```
+
+Executar build:
+
+```bash
+yarn start
+```
+
+
+## 5. Docker
+
+Subir o projeto com Docker:
+
+```bash
+docker-compose up --build
+```
+
+Certifique-se de que o `.env` esteja corretamente configurado.
+
+
+## 6. Scripts
+
+```json
+"scripts": {
+  "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+  "start": "node dist/server.js",
+  "build": "tsc",
+  "lint": "eslint . --ext .ts",
+  "format": "prettier --write ."
+}
+```
+
+
+## 7. Autor
+
+Gabriel de Carvalho  
+[linkedin.com/in/gabrielgfc1](https://linkedin.com/in/gabrielgfc1)

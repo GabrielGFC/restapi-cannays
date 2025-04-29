@@ -1,39 +1,39 @@
-import mongoose from 'mongoose';
-
-import * as config from '../config';
-
+import { Pool } from 'pg';
+import config from '../config';
 import { logger } from '../logger';
 import { DB_CONNECTION_SUCCESS } from '../../utils/constants';
 
-mongoose.Promise = global.Promise;
+let pool: Pool;
 
 /**
- * Create the connection to the database
+ * Create the connection to the PostgreSQL database
  * @async
  *
  * @return Promise<void>
  */
-const dbConnection: Function = async (): Promise<void> => {
-	const dbHost: string = config.DB_HOST;
-	const dbPort: number = config.DB_PORT;
-	const dbName: string = config.DB_NAME;
-	const dbUser: string = config.DB_USER;
-	const dbPassword: string = config.DB_PASSWORD;
+const dbConnection = async (): Promise<void> => {
+  const dbHost: string = config.database.host;
+  const dbPort: number = config.database.port;
+  const dbName: string = config.database.name;
+  const dbUser: string = config.database.user;
+  const dbPassword: string = config.database.password;
 
-	const options: object = {
-		useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true, useUnifiedTopology: true,
-	};
+  try {
+    pool = new Pool({
+      host: dbHost,
+      port: dbPort,
+      database: dbName,
+      user: dbUser,
+      password: dbPassword,
+    });
 
-	try {
-		if (config.DB_AUTH !== 'true') {
-			await mongoose.connect(`mongodb://${dbHost}:${dbPort}/${dbName}`, options);
-		} else {
-			await mongoose.connect(`mongodb://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`, options);
-		}
-		logger.info(DB_CONNECTION_SUCCESS);
-	} catch (err) {
-		logger.error(err.stack);
-	}
+    await pool.query('SELECT NOW()');
+
+    logger.info(DB_CONNECTION_SUCCESS);
+  } catch (err: any) {
+    logger.error('Database connection failed', err.stack);
+    process.exit(1);
+  }
 };
 
-export { dbConnection };
+export { dbConnection, pool };

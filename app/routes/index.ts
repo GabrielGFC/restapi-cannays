@@ -1,12 +1,12 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as path from 'path';
+import express from 'express';
+import bodyParser from 'body-parser';
+import path from 'path';
 import expressHandlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import * as config from '../core/config';
+import config from '../core/config';
 
 import { DefaultRoute } from './default.route';
 import { AuthRoute } from './auth.route';
@@ -44,7 +44,7 @@ class Routes {
 
 		app.use(localeMiddleware);
 
-		if (config.AUTH_ENABLED === 'true') {
+		if (config.auth.enabled === 'true') {
 			app.use(authMiddleware);
 		}
 

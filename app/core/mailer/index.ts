@@ -2,9 +2,9 @@ import nodemailer from 'nodemailer';
 import path from 'path';
 import fs from 'fs';
 import handlebars from 'handlebars';
-import * as Mail from 'nodemailer/lib/mailer';
+import Mail from 'nodemailer/lib/mailer';
 
-import * as config from '../config';
+import config from '../config';
 import { logger } from '../logger';
 import { Locale } from '../locale';
 
@@ -24,15 +24,15 @@ class Mailer {
    */
 	static sendMail(data: any): void {
 		try {
-			const user: string = config.MAIL_USERNAME;
+			const user: string = config.mail.port;
 
 			const smtpTransport: Mail = nodemailer.createTransport({
 				// @ts-ignore
-				host: config.MAIL_HOST,
-				port: config.MAIL_PORT,
+				host: config.mail.host,
+				port: config.mail.port,
 				auth: {
 					user,
-					pass: config.MAIL_PASSWORD,
+					pass: config.mail.password,
 				},
 			});
 

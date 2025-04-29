@@ -1,8 +1,0 @@
-description: The request is forbidden due to missing  permissions.
-body:
-  application/json:
-    schema: !include ../error.json
-    example: |
-      {
-        "message": "You do not have permissions for that request.."
-      }

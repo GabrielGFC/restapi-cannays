@@ -1,9 +1,0 @@
-description: |
-  A server internal prevents the error to complete.
-body:
-  application/json:
-    schema: !include ../error.json
-    example: |
-      {
-        "message": "A server internal error occurs. Please contact us ."
-      }
