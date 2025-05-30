@@ -5,30 +5,106 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e10774b-e3ff-4e65-ab75-098f8faed7c3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/task.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/user.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/db/connect.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/config/connect.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/locale/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/logger/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/Dockerfile.prod" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api-gateway/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api-gateway/prisma/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api-gateway/src/controllers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api-gateway/src/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api-gateway/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/api-gateway/src/routes/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/prisma/migrations/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/prisma/schema.prisma" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/controllers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/models/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/routes/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/services/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/tests/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/utils/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/auth-service/src/validator/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/prisma/migrations/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/controllers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/models/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/routes/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/services/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/tests/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/utils/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/dispense-service/src/validator/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/prisma/migrations/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/controllers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/models/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/routes/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/services/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/tests/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/utils/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/finance-service/src/validator/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/prisma/migrations/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/controllers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/models/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/routes/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/services/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/tests/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/utils/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/hr-service/src/validator/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/prisma/migrations/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/controllers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/models/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/routes/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/services/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/tests/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/utils/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/patient-service/src/validator/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/prisma/migrations/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/controllers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/core/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/models/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/routes/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/services/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/tests/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/utils/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/production-service/src/validator/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/helm/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/infra/terraform/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/common/src/errors/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/common/src/middleware/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/database/prisma/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/database/src/client.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/events/src/consumers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/events/src/producers/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/validator/src/zod/.gitkeep" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-workspace.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.base.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="false" />
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,17 +125,21 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/admin/Documents/GitHub/restapi-cannays",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "settings.sync",
-    "ts.external.directory.path": "C:\\Users\\admin\\Documents\\GitHub\\restapi-cannays\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\admin\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\admin\Documents\GitHub\restapi-cannays" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Documents\GitHub\restapi-cannays\app\core\config" />
       <recent name="C:\Users\admin\Documents\GitHub\restapi-cannays\app\core" />
@@ -83,6 +163,8 @@
       <updated>1748560280013</updated>
       <workItem from="1748560281830" duration="505000" />
       <workItem from="1748560814085" duration="2874000" />
+      <workItem from="1748605947910" duration="1615000" />
+      <workItem from="1748608432428" duration="5425000" />
     </task>
     <servers />
   </component>
