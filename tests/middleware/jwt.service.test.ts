@@ -37,16 +37,16 @@ describe('JWT Service', () => {
             throw new Error('Invalid token');
         });
 
-        await expect(verifyJWT('Bearer invalidToken', secretKey)).rejects.toThrow(
-            'Invalid token'
-        );
+        await expect(
+            verifyJWT('Bearer invalidToken', secretKey),
+        ).rejects.toThrow('Invalid token');
     });
 
     test('verifyJWT should throw an error if payload is a string', async () => {
         (jwt.verify as jest.Mock).mockReturnValue('InvalidPayload');
 
         await expect(verifyJWT('Bearer validToken', secretKey)).rejects.toThrow(
-            'Invalid token payload'
+            'Invalid token payload',
         );
     });
 });

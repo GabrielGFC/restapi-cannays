@@ -27,12 +27,12 @@ module.exports = {
                 type: Sequelize.STRING(255),
                 allowNull: false,
             },
-            created_at: {  
+            created_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
                 defaultValue: Sequelize.NOW,
             },
-            updated_at: {  
+            updated_at: {
                 type: Sequelize.DATE,
                 allowNull: false,
                 defaultValue: Sequelize.NOW,
@@ -40,6 +40,7 @@ module.exports = {
         });
     },
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async down(queryInterface, Sequelize) {
         await queryInterface.dropTable('users');
     },

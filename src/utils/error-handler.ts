@@ -3,9 +3,10 @@ import { CustomError } from './custom-error';
 
 export const errorHandler = (
     err: Error | CustomError,
-    req: Request,
+    _req: Request,
     res: Response,
-    next: NextFunction,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _next: NextFunction,
 ) => {
     const statusCode = err instanceof CustomError ? err.statusCode : 500;
     const message = err.message || 'Internal Server Error';

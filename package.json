@@ -1,7 +1,7 @@
 {
-    "name": "express-typescript-sequelize-boilerplate",
+    "name": "restapi-cannays",
     "version": "1.0.0",
-    "description": "Express-Typescript-Postgres-Sequelize Boilerplate",
+    "description": "restapi-cannays",
     "main": "server.ts",
     "scripts": {
         "test": "jest",
@@ -14,11 +14,10 @@
         "migration:generate": "sequelize migration:generate --name",
         "migration": "sequelize db:migrate"
     },
-    "author": "Pius Restiantoro",
-    "license": "MIT",
+    "author": "Gabriel Fernandes",
     "repository": {
         "type": "git",
-        "url": "https://github.com/pius706975/express-typescript-sequelize-boilerplate.git"
+        "url": "https://github.com/gabrielgfc/restapi-cannays"
     },
     "dependencies": {
         "bcrypt": "^5.1.1",
