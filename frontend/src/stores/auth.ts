@@ -19,8 +19,8 @@ export const useAuthStore = defineStore(
         const isAuthenticated = computed(() => !!token.value);
 
         async function login(email: string, password: string) {
-            const { data } = await api.post('/auth/login', { email, password });
-            token.value = data.data.token;
+            const { data } = await api.post('/auth/signin', { email, password });
+            token.value = data.data.accessToken;
             user.value = data.data.user;
         }
 

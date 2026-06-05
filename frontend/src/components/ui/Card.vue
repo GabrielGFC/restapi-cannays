@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils';
-defineProps<{ padded?: boolean }>();
+defineProps<{ padded?: boolean; size?: 'md' | 'lg' }>();
 </script>
 
 <template>
     <div
         :class="
             cn(
-                'rounded-lg border border-divider bg-surface shadow-sm',
-                padded !== false && 'p-6',
+                'ui-card',
+                size === 'lg' && 'ui-card--lg',
+                padded === false && '!p-0',
             )
         "
     >

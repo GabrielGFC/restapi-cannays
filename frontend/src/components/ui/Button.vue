@@ -7,20 +7,21 @@ const props = withDefaults(
         size?: 'sm' | 'md' | 'lg';
         type?: 'button' | 'submit' | 'reset';
         disabled?: boolean;
+        block?: boolean;
     }>(),
     { variant: 'primary', size: 'md', type: 'button' },
 );
 
 const variants: Record<string, string> = {
-    primary: 'bg-primary text-white hover:bg-primary-medium',
-    secondary: 'border border-primary text-primary hover:bg-primary-light',
-    ghost: 'text-ink hover:bg-divider',
-    danger: 'bg-danger text-white hover:bg-danger/90',
+    primary: 'ui-btn--primary',
+    secondary: 'bg-white text-primary border-2 border-primary hover:bg-primary-light/40',
+    ghost: 'ui-btn--ghost',
+    danger: 'ui-btn--danger',
 };
 const sizes: Record<string, string> = {
-    sm: 'h-8 px-3 text-xs',
-    md: 'h-10 px-4 text-sm',
-    lg: 'h-12 px-6 text-base',
+    sm: 'h-9 px-4 text-sm',
+    md: '',
+    lg: 'ui-btn--lg',
 };
 </script>
 
@@ -30,9 +31,10 @@ const sizes: Record<string, string> = {
         :disabled="props.disabled"
         :class="
             cn(
-                'inline-flex items-center justify-center gap-2 rounded-md font-medium transition disabled:opacity-50 disabled:cursor-not-allowed',
+                'ui-btn',
                 variants[props.variant],
                 sizes[props.size],
+                props.block && 'ui-btn--block',
             )
         "
     >

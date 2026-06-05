@@ -9,6 +9,12 @@ const routes: RouteRecordRaw[] = [
         meta: { public: true },
     },
     {
+        path: '/register',
+        name: 'register',
+        component: () => import('@/views/auth/RegisterView.vue'),
+        meta: { public: true },
+    },
+    {
         path: '/',
         component: () => import('@/components/layout/AppShell.vue'),
         children: [

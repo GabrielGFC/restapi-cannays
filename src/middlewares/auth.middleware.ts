@@ -21,7 +21,7 @@ export const authMiddleware = async (
 ) => {
     const { method, path } = req;
 
-    if (method === 'OPTIONS' || ['/api/auth/signin'].includes(path)) {
+    if (method === 'OPTIONS' || ['/api/auth/signin', '/api/auth/signup'].includes(path)) {
         return next();
     }
 

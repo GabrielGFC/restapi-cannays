@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e10774b-e3ff-4e65-ab75-098f8faed7c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.claude/scheduled_tasks.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/theme.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/AppShell.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/AppShell.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/MainSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/MainSidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Button.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Button.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Card.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Input.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Input.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Label.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Label.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/config/axios.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/config/axios.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/auth/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/auth/LoginView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/auth.middleware.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,11 +69,13 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "javascript.preferred.runtime.type.id": "node",
     "last_opened_file_path": "C:/Users/gabriel.carvalho/Documents/GitHub/restapi-cannays",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -104,7 +121,7 @@
       <workItem from="1748984098624" duration="2421000" />
       <workItem from="1749057730603" duration="232000" />
       <workItem from="1749156637024" duration="2049000" />
-      <workItem from="1780668430217" duration="3712000" />
+      <workItem from="1780668430217" duration="6676000" />
     </task>
     <servers />
   </component>

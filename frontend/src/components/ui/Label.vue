@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { cn } from '@/lib/utils';
 defineProps<{ for?: string; required?: boolean }>();
 </script>
 
 <template>
-    <label :for="$props.for" class="block text-sm font-medium text-ink mb-1">
+    <label :for="$props.for" :class="cn('ui-label', required && 'ui-label--required')">
         <slot />
-        <span v-if="required" class="text-danger">*</span>
     </label>
 </template>

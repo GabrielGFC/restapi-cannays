@@ -10,7 +10,10 @@ api.interceptors.request.use((cfg) => {
     if (raw) {
         try {
             const { token } = JSON.parse(raw);
-            if (token) cfg.headers.Authorization = `Bearer ${token}`;
+            if (token) {
+                const value = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+                cfg.headers.Authorization = value;
+            }
         } catch {
             // ignore parse error
         }

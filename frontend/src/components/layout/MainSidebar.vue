@@ -38,7 +38,7 @@ const items = [
         "
     >
         <div class="flex items-center justify-between px-4 h-16 border-b border-white/10">
-            <span v-if="!sidebarCollapsed" class="font-bold tracking-tight">CannaSYS</span>
+            <span v-if="!sidebarCollapsed" class="font-display text-xl tracking-wide">CANNASYS</span>
             <button
                 type="button"
                 class="p-1 rounded hover:bg-white/10"
