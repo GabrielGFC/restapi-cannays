@@ -2,187 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   CannaSYS — Design tokens
+   Approach: Apple-like restraint. Quiet surfaces, single brand
+   accent (teal #026874), generous whitespace, refined typography.
+   Spacing scale used everywhere: 4, 8, 12, 16, 24, 32, 48, 64.
+   ============================================================ */
 :root {
-    /* CannaSYS palette (Figma) */
-    --color-primary: #026874;
-    --color-primary-dark: #062e2d;
-    --color-primary-medium: #2e7d4f;
-    --color-primary-light: #d6ead8;
-    --color-accent: #75a38c;
-    --color-accent-dark: #4a1b3d;
+    /* === Brand === */
+    --color-primary:        #026874;
+    --color-primary-hover:  #015560;
+    --color-primary-active: #013D44;
+    --color-primary-soft:   #E6F2F3;  /* very light tint for backgrounds */
+    --color-primary-ring:   rgba(2, 104, 116, 0.20);
 
-    --color-ink: #062e2d;
-    --color-ink-soft: rgba(0, 0, 0, 0.55);
-    --color-ink-mute: rgba(0, 0, 0, 0.45);
-    --color-divider: #e8e8e8;
-    --color-surface: #ffffff;
-    --color-surface-alt: #f7f7f7;
-    --color-surface-bg: #f1f1f1;
-    --color-field: rgba(0, 0, 0, 0.025);
+    /* Subtle accent only for decoration / data viz, never UI chrome */
+    --color-accent:         #75A38C;
+    --color-mulberry:       #4C1041;
+    --color-ink-strong:     #062E2D;  /* product display heading color */
 
-    --color-warning: #f59e0b;
-    --color-danger: #b3261e;
-    --color-success: #16a34a;
+    /* === Neutral surface palette === */
+    --color-background:     #FAFAFA;
+    --color-surface:        #FFFFFF;
+    --color-surface-muted:  #F4F4F5;
+    --color-surface-sunken: #EFEFEF;
 
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-pill: 40px;
+    /* === Text === */
+    --color-text-primary:   #18181B;  /* near-black */
+    --color-text-secondary: #52525B;  /* muted */
+    --color-text-tertiary:  #71717A;  /* helper */
+    --color-text-disabled:  #A1A1AA;
 
-    --shadow-field: 0 4px 4px rgba(0, 0, 0, 0.12);
-    --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.12);
-    --shadow-btn: 0 4px 8px rgba(0, 0, 0, 0.15);
-    --shadow-btn-hover: 0 6px 14px rgba(2, 104, 116, 0.35);
+    /* === Borders === */
+    --color-border:         #E4E4E7;
+    --color-border-strong:  #D4D4D8;
 
-    --font-sans: 'Inter', system-ui, sans-serif;
-    --font-display: 'Amaranth', system-ui, sans-serif;
+    /* === Semantic === */
+    --color-success: #16A34A;
+    --color-warning: #D97706;
+    --color-error:   #DC2626;
+    --color-info:    #0284C7;
+
+    /* === Typography === */
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+                 'Segoe UI', system-ui, sans-serif;
+    --font-display: 'Amaranth', var(--font-sans);
+
+    /* === Elevation (subtle, Apple-like) === */
+    --shadow-xs: 0 1px 2px rgba(24, 24, 27, 0.04);
+    --shadow-sm: 0 1px 3px rgba(24, 24, 27, 0.06), 0 1px 2px rgba(24, 24, 27, 0.04);
+    --shadow-md: 0 4px 12px rgba(24, 24, 27, 0.06), 0 2px 4px rgba(24, 24, 27, 0.04);
+    --shadow-lg: 0 12px 32px rgba(24, 24, 27, 0.08), 0 4px 8px rgba(24, 24, 27, 0.04);
+
+    /* === Radius === */
+    --radius-input:  10px;
+    --radius-button: 10px;
+    --radius-card:   20px;
+    --radius-card-lg:28px;
+    --radius-modal:  24px;
+    --radius-panel:  32px;
 }
 
-html,
-body,
-#app {
-    height: 100%;
-    margin: 0;
-}
+/* === Base === */
+html, body, #app { height: 100%; margin: 0; }
 
 body {
     font-family: var(--font-sans);
-    color: var(--color-ink);
-    background: var(--color-surface-bg);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+    background: var(--color-background);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--color-primary-dark);
-    font-weight: 700;
+    color: var(--color-text-primary);
+    font-weight: 600;
     margin: 0;
+    letter-spacing: -0.01em;
 }
 
+/* === Focus: single, consistent ring === */
+*:focus { outline: none; }
 *:focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
+    border-radius: 4px;
 }
 
+/* === Reusable utility classes === */
 @layer components {
-    .page {
-        @apply min-h-full px-6 py-6 md:px-10 md:py-8;
-        background: var(--color-surface-bg);
-    }
     .page-title {
-        @apply text-2xl md:text-3xl font-bold mb-6;
-        color: var(--color-primary-dark);
+        font-size: clamp(28px, 3vw, 36px);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--color-text-primary);
     }
     .page-subtitle {
-        @apply text-sm mb-4;
-        color: var(--color-ink-soft);
-    }
-
-    .ui-card {
-        background: var(--color-surface);
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-card);
-        padding: 1.5rem;
-    }
-    .ui-card--lg { padding: 2rem; border-radius: var(--radius-pill); }
-
-    .ui-field {
-        display: flex;
-        align-items: center;
-        height: 56px;
-        background: var(--color-field);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-field);
-        padding: 0 18px;
-        gap: 12px;
-        transition: background 0.15s, box-shadow 0.15s;
-    }
-    .ui-field:focus-within {
-        background: var(--color-surface);
-        box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-field);
-    }
-    .ui-field--invalid {
-        box-shadow: 0 0 0 2px var(--color-danger), var(--shadow-field);
-    }
-    .ui-field input,
-    .ui-field textarea,
-    .ui-field select {
-        flex: 1;
-        min-width: 0;
-        border: none;
-        background: transparent;
-        outline: none;
-        font: inherit;
-        font-size: 16px;
-        color: var(--color-ink);
-    }
-    .ui-field input::placeholder { color: var(--color-ink-mute); }
-
-    .ui-label {
-        display: block;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--color-ink-soft);
-        margin-bottom: 6px;
-    }
-    .ui-label--required::after {
-        content: ' *';
-        color: var(--color-danger);
-    }
-
-    .ui-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        height: 48px;
-        padding: 0 24px;
-        border-radius: var(--radius-pill);
-        border: none;
-        cursor: pointer;
-        font: inherit;
-        font-weight: 500;
         font-size: 15px;
-        box-shadow: var(--shadow-btn);
-        text-decoration: none;
-        transition: filter 0.15s, transform 0.05s, box-shadow 0.15s;
+        color: var(--color-text-secondary);
+        margin-top: 4px;
     }
-    .ui-btn:active { transform: translateY(1px); }
-    .ui-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-    .ui-btn--primary {
-        background: var(--color-primary);
-        color: #fff;
+    .section-title {
+        font-size: clamp(20px, 2vw, 24px);
+        font-weight: 600;
+        letter-spacing: -0.01em;
     }
-    .ui-btn--primary:hover:not(:disabled) {
-        filter: brightness(1.08);
-        box-shadow: var(--shadow-btn-hover);
+    .card-title {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
     }
-    .ui-btn--ghost {
-        background: var(--color-surface-alt);
-        color: var(--color-ink-soft);
-    }
-    .ui-btn--ghost:hover:not(:disabled) {
-        background: #ebebeb;
-        color: var(--color-primary-dark);
-    }
-    .ui-btn--danger {
-        background: var(--color-danger);
-        color: #fff;
-    }
-    .ui-btn--lg { height: 64px; font-size: 18px; padding: 0 32px; }
-    .ui-btn--block { width: 100%; }
-
-    .ui-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 12px;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 500;
-        background: var(--color-primary-light);
-        color: var(--color-primary-dark);
-    }
-    .ui-chip--warning { background: #fff3d6; color: #8a5a00; }
-    .ui-chip--danger  { background: #fdecea; color: var(--color-danger); }
-    .ui-chip--success { background: #def7e6; color: #1f7a3a; }
 }

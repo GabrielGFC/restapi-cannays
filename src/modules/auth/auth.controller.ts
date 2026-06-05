@@ -9,10 +9,12 @@ export const signUpController = async (
     try {
         const userData = req.body;
         const response = await signUpService(userData);
+        const u: any = (response.user as any).toJSON ? (response.user as any).toJSON() : response.user;
+        const { password: _pw, ...safeUser } = u;
 
         res.status(201).json({
             message: 'Successfully signed up',
-            data: response.user,
+            data: safeUser,
         });
     } catch (error) {
         next(error);
@@ -27,10 +29,12 @@ export const signInController = async (
     try {
         const userData = req.body;
         const response = await signInService(userData);
+        const u: any = (response.user as any).toJSON ? (response.user as any).toJSON() : response.user;
+        const { password: _pw, ...safeUser } = u;
 
         res.status(200).json({
             message: 'Successfully signed in',
-            data: response,
+            data: { user: safeUser, accessToken: response.accessToken },
         });
     } catch (error) {
         next(error);
