@@ -1,0 +1,25 @@
+%% C4 Nível 1 — Contexto · CannaSYS
+graph TB
+    classDef user fill:#D6EAD8,stroke:#1A5C38,color:#1A5C38,stroke-width:2px
+    classDef system fill:#1A5C38,stroke:#0E3E26,color:#fff,stroke-width:2px
+    classDef ext fill:#E8E8E8,stroke:#6B7280,color:#333
+
+    P[Paciente]:::user
+    M[Médico]:::user
+    F[Farmacêutico]:::user
+    A[Administrador]:::user
+
+    SYS["CannaSYS<br/>ERP de cannabis medicinal"]:::system
+
+    SMTP[Servidor SMTP / SES]:::ext
+    PAY[Gateway de pagamento]:::ext
+    ANV[ANVISA / e-SUS Notifica]:::ext
+
+    P -->|consulta prontuário, recebe receitas| SYS
+    M -->|prescreve, acompanha pacientes| SYS
+    F -->|valida receitas, controla estoque| SYS
+    A -->|gestão geral, relatórios| SYS
+
+    SYS -->|notifica via e-mail| SMTP
+    SYS -->|cobrança de mensalidades| PAY
+    SYS -.relatórios periódicos.-> ANV

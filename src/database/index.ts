@@ -1,6 +1,7 @@
 import logger from '@/utils/logger';
 import Sequelize from 'sequelize';
 import userModel from './models/user.model';
+import cultivoLoteModel from './models/cultivo.model';
 import {
     DB_DIALECT,
     DB_HOST,
@@ -42,6 +43,7 @@ sequelize.authenticate();
 
 export const DB = {
     Users: userModel(sequelize),
+    CultivoLotes: cultivoLoteModel(sequelize),
     sequelize, // connection instance (RAW queries)
     Sequelize, // library
 };

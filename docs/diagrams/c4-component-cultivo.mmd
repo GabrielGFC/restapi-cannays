@@ -1,0 +1,27 @@
+%% C4 Nível 3 — Componentes do bounded context Cultivo (backend)
+%% Arquitetura hexagonal: adapters → use cases → ports → entities
+graph LR
+    classDef adapter fill:#D6EAD8,stroke:#1A5C38,color:#1A5C38
+    classDef usecase fill:#2E7D4F,stroke:#1A5C38,color:#fff
+    classDef entity fill:#1A5C38,stroke:#0E3E26,color:#fff
+    classDef port fill:#F59E0B,stroke:#B45309,color:#fff
+
+    HTTP[cultivo.routes.ts<br/>HTTP adapter]:::adapter
+    CTRL[cultivo.controller.ts<br/>Joi validation]:::adapter
+
+    UC1[list / get / create<br/>cultivo.service.ts]:::usecase
+    UC2[transitionEtapa<br/>cultivo.service.ts]:::usecase
+
+    REPO[repo port<br/>cultivo.repo.ts]:::port
+    DB[(CultivoLoteModel<br/>Sequelize → Postgres)]:::adapter
+
+    ENT[CultivoLote<br/>cultivo.interfaces.ts]:::entity
+
+    HTTP --> CTRL
+    CTRL --> UC1
+    CTRL --> UC2
+    UC1 --> REPO
+    UC2 --> REPO
+    REPO --> DB
+    UC1 -.usa.-> ENT
+    UC2 -.usa.-> ENT

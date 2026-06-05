@@ -1,0 +1,30 @@
+%% Sequência síncrona — Emissão e validação de receita
+sequenceDiagram
+    autonumber
+    participant M as Médico (SPA)
+    participant API as API Express
+    participant DB as Postgres
+    participant F as Farmacêutico (SPA)
+    participant PAC as Paciente
+
+    M->>API: POST /interacao/receita
+    API->>DB: INSERT receita (status=aguardando)
+    DB-->>API: id
+    API-->>M: 201 { id }
+    Note over API,F: Receita aparece na fila do farmacêutico
+
+    F->>API: GET /interacao/fila
+    API->>DB: SELECT receitas WHERE status IN (aguardando,em_analise)
+    DB-->>API: lista
+    API-->>F: 200 lista
+
+    F->>API: PATCH /interacao/:id/status { aprovada }
+    API->>DB: UPDATE receita SET status=aprovada
+    API->>DB: SELECT alertas_clinicos(paciente, itens)
+    DB-->>API: ok
+    API-->>F: 200 atualizada
+
+    PAC->>API: GET /dispensacao/elegivel
+    API->>DB: SELECT receitas aprovadas do paciente
+    DB-->>API: lista
+    API-->>PAC: 200 disponível para retirada

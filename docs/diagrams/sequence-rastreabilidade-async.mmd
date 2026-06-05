@@ -1,0 +1,20 @@
+%% Sequência assíncrona — Lote colhido cria rascunho de produção
+sequenceDiagram
+    autonumber
+    participant A as Admin (SPA)
+    participant API as API Express
+    participant DB as Postgres
+    participant SQS as SQS<br/>(cannasys-events)
+    participant W as Worker Produção
+
+    A->>API: PATCH /cultivo/:id/etapa { colheita }
+    API->>DB: UPDATE cultivo_lote SET etapa=colheita
+    API->>SQS: PutMessage LoteColhido { loteId, especie, quantidade }
+    API-->>A: 200 atualizado
+
+    Note over SQS,W: consumo assíncrono (até alguns segundos)
+
+    SQS->>W: ReceiveMessage LoteColhido
+    W->>DB: INSERT producao_oleo (status=rascunho, lote_id=...)
+    W->>SQS: DeleteMessage
+    Note over W: Idempotência: chave dedupe = loteId

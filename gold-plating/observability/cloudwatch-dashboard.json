@@ -1,0 +1,137 @@
+{
+    "widgets": [
+        {
+            "type": "metric",
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "ALB — latência p95 / p99",
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "sa-east-1",
+                "metrics": [
+                    [
+                        "AWS/ApplicationELB",
+                        "TargetResponseTime",
+                        "LoadBalancer",
+                        "REPLACE_ALB_ARN_SUFFIX",
+                        { "stat": "p95", "label": "p95" }
+                    ],
+                    [
+                        "...",
+                        { "stat": "p99", "label": "p99" }
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "metric",
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "title": "ALB — taxa de erros 5xx",
+                "view": "timeSeries",
+                "region": "sa-east-1",
+                "metrics": [
+                    [
+                        {
+                            "expression": "100 * (errors / requests)",
+                            "label": "5xx %",
+                            "id": "rate"
+                        }
+                    ],
+                    [
+                        "AWS/ApplicationELB",
+                        "HTTPCode_Target_5XX_Count",
+                        "LoadBalancer",
+                        "REPLACE_ALB_ARN_SUFFIX",
+                        { "id": "errors", "visible": false, "stat": "Sum" }
+                    ],
+                    [
+                        ".",
+                        "RequestCount",
+                        ".",
+                        ".",
+                        { "id": "requests", "visible": false, "stat": "Sum" }
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "metric",
+            "width": 8,
+            "height": 6,
+            "properties": {
+                "title": "RDS — CPU / conexões",
+                "view": "timeSeries",
+                "region": "sa-east-1",
+                "metrics": [
+                    ["AWS/RDS", "CPUUtilization", "DBInstanceIdentifier", "REPLACE_RDS_ID"],
+                    [".", "DatabaseConnections", ".", "."]
+                ]
+            }
+        },
+        {
+            "type": "metric",
+            "width": 8,
+            "height": 6,
+            "properties": {
+                "title": "ECS — tasks running / CPU / memória",
+                "view": "timeSeries",
+                "region": "sa-east-1",
+                "metrics": [
+                    [
+                        "ECS/ContainerInsights",
+                        "RunningTaskCount",
+                        "ClusterName",
+                        "REPLACE_CLUSTER",
+                        "ServiceName",
+                        "REPLACE_SERVICE"
+                    ],
+                    ["AWS/ECS", "CPUUtilization", ".", ".", ".", "."],
+                    [".", "MemoryUtilization", ".", ".", ".", "."]
+                ]
+            }
+        },
+        {
+            "type": "metric",
+            "width": 8,
+            "height": 6,
+            "properties": {
+                "title": "SQS — fila e DLQ",
+                "view": "timeSeries",
+                "region": "sa-east-1",
+                "metrics": [
+                    [
+                        "AWS/SQS",
+                        "ApproximateNumberOfMessagesVisible",
+                        "QueueName",
+                        "cannasys-dev-events"
+                    ],
+                    [".", ".", ".", "cannasys-dev-events-dlq"],
+                    [
+                        ".",
+                        "ApproximateAgeOfOldestMessage",
+                        ".",
+                        "cannasys-dev-events"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "metric",
+            "width": 24,
+            "height": 4,
+            "properties": {
+                "title": "Custo estimado diário (USD)",
+                "view": "timeSeries",
+                "region": "us-east-1",
+                "metrics": [
+                    ["AWS/Billing", "EstimatedCharges", "Currency", "USD"]
+                ],
+                "period": 86400,
+                "stat": "Maximum"
+            }
+        }
+    ]
+}

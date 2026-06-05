@@ -1,0 +1,7 @@
+env                = "dev"
+region             = "sa-east-1"
+db_username        = "cannasys_admin"
+db_password        = "CHANGE_ME_USE_SECRETS_MANAGER"
+container_image    = "123456789012.dkr.ecr.sa-east-1.amazonaws.com/cannasys-api:latest"
+alert_email        = "oncall@associacao.org"
+monthly_budget_usd = 300

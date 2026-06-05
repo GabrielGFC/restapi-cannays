@@ -1,0 +1,38 @@
+%% C4 Nível 2 — Containers · CannaSYS
+graph TB
+    classDef user fill:#D6EAD8,stroke:#1A5C38,color:#1A5C38
+    classDef spa fill:#2E7D4F,stroke:#1A5C38,color:#fff
+    classDef api fill:#1A5C38,stroke:#0E3E26,color:#fff
+    classDef data fill:#F59E0B,stroke:#B45309,color:#fff
+    classDef async fill:#7C3AED,stroke:#5B21B6,color:#fff
+    classDef ext fill:#E8E8E8,stroke:#6B7280,color:#333
+
+    U((Usuários)):::user
+
+    subgraph AWS["AWS sa-east-1"]
+        CF[CloudFront]:::spa
+        SPA["SPA Vue 3<br/>S3 estático"]:::spa
+        ALB[ALB]:::api
+        API["API Express<br/>ECS Fargate (2 AZs)"]:::api
+        DB[("PostgreSQL<br/>RDS Multi-AZ")]:::data
+        S3D[("S3<br/>laudos/docs")]:::data
+        SQS["SQS<br/>eventos rastreabilidade"]:::async
+        CW[CloudWatch]:::async
+    end
+
+    SMTP[SES]:::ext
+    PAY[Gateway pagamento]:::ext
+    ANV[ANVISA]:::ext
+
+    U --> CF
+    CF --> SPA
+    SPA -->|REST /api JWT| ALB
+    ALB --> API
+    API --> DB
+    API --> S3D
+    API --> SQS
+    SQS -.consumer.-> API
+    API --> SMTP
+    API --> PAY
+    API -.relatórios.-> ANV
+    API -.métricas/logs.-> CW

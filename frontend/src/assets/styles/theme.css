@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-primary: #1a5c38;
+    --color-primary-medium: #2e7d4f;
+    --color-primary-light: #d6ead8;
+    --color-ink: #333333;
+    --color-divider: #e8e8e8;
+    --color-surface: #ffffff;
+    --color-warning: #f59e0b;
+    --color-danger: #dc2626;
+    --color-success: #16a34a;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+html,
+body,
+#app {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--color-ink);
+    background: var(--color-surface);
+}
+
+*:focus-visible {
+    outline: 2px solid var(--color-primary-medium);
+    outline-offset: 2px;
+}

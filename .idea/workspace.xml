@@ -6,18 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="7e10774b-e3ff-4e65-ab75-098f8faed7c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.npmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/migrations/20241025023422-create-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/migrations/20250605210146-create-user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/models/user.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/error-handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/error-handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/middleware/jwt.service.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/middleware/jwt.service.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/gabriel.carvalho/Documents/GitHub/restapi-cannays" value="2xn40EoOKwsDMwCXjihxoZgGWWG" />
+    </persistenceIdMap>
   </component>
   <component name="FormatOnSaveOptions">
     <option name="myRunOnSave" value="false" />
@@ -29,18 +29,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "GabrielGFC"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GabrielGFC&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/GabrielGFC/restapi-cannays.git",
-    "accountId": "912fad2a-fbb4-4cc9-aeea-11c498fc5123"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/GabrielGFC/restapi-cannays.git&quot;,
+    &quot;accountId&quot;: &quot;912fad2a-fbb4-4cc9-aeea-11c498fc5123&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -55,9 +55,11 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/admin/Documents/GitHub/restapi-cannays",
+    "last_opened_file_path": "C:/Users/gabriel.carvalho/Documents/GitHub/restapi-cannays",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,7 +85,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-WS-251.26094.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-WS-261.24374.125" />
       </set>
     </attachedChunks>
   </component>
@@ -102,6 +104,7 @@
       <workItem from="1748984098624" duration="2421000" />
       <workItem from="1749057730603" duration="232000" />
       <workItem from="1749156637024" duration="2049000" />
+      <workItem from="1780668430217" duration="3712000" />
     </task>
     <servers />
   </component>

@@ -1,286 +1,117 @@
-# 📦 RestAPI Cannays Boilerplate (Express.js • TypeScript • Sequelize)
+# CannaSYS 🌿
 
-Um boilerplate mínimo e pronto para uso para construir uma API REST de backend com **Express.js**, **TypeScript** e **Sequelize**. Inclui documentação via Swagger, configuração de ambiente, linting, migrações e testes.
+> ERP open-source para associações brasileiras de cannabis medicinal — do cultivo da planta à dispensação ao paciente, com rastreabilidade auditável.
 
----
+![status](https://img.shields.io/badge/status-em%20desenvolvimento-2E7D4F)
+![license](https://img.shields.io/badge/license-MIT-1A5C38)
+![stack](https://img.shields.io/badge/stack-Node%2020%20%2B%20Vue%203-1A5C38)
 
-## ✨ Funcionalidades
+## Visão executiva
 
-- ⚡ **Express.js** como framework HTTP  
-- 📋 **Swagger** para documentação automática da API  
-- 🛠 **TypeScript** com suporte completo a tipos  
-- 📄 Linting e formatação com **ESLint** + **Prettier**  
-- 🐘 **Sequelize** ORM para migrações e modelos de banco de dados  
-- 🔐 Exemplo de autenticação baseada em JWT (módulo de Auth)  
-- 🧪 **Jest** para testes unitários
+O **CannaSYS** integra os 4 perfis envolvidos no atendimento (paciente, médico, farmacêutico, administrador) em um único sistema que cobre 6 bounded contexts e mantém a **cadeia de rastreabilidade exigida pela ANVISA**: cada frasco dispensado é rastreável até o lote de cultivo de origem.
 
----
+## Estado por fase
 
-## 🚀 Pré-requisitos
+| Fase  | Escopo                                                          | Status         |
+| ----- | --------------------------------------------------------------- | -------------- |
+| 1     | Backend `auth` + `user` + `cultivo`                             | ✅ Concluída   |
+| 1     | Frontend scaffold + 15 views Vue 3 + 6 stores Pinia              | ✅ Concluída   |
+| 1     | Documentação arquitetural (5 ADRs + SAD + 6 diagramas C4)       | ✅ Concluída   |
+| 2     | Backend `producao` + `rh` + `interacao` + `configuracoes`        | 🟡 Planejada   |
+| 3     | Gold-plating: Terraform AWS + observability + chaos + DR + custo | 🟡 Planejada   |
+| 4     | Pilot com associação parceira                                   | 🟡 Planejada   |
 
-- **Node.js** >= 18.x  
-- **npm** (ou **Yarn**)  
-- Um banco de dados relacional (por exemplo, PostgreSQL, MySQL, MariaDB, SQLite)
+## C4 Nível 2 — Containers
 
----
-## 📥 Instalação
+```mermaid
+graph TB
+    classDef user fill:#D6EAD8,stroke:#1A5C38,color:#1A5C38
+    classDef spa fill:#2E7D4F,stroke:#1A5C38,color:#fff
+    classDef api fill:#1A5C38,stroke:#0E3E26,color:#fff
+    classDef data fill:#F59E0B,stroke:#B45309,color:#fff
+    classDef async fill:#7C3AED,stroke:#5B21B6,color:#fff
+    classDef ext fill:#E8E8E8,stroke:#6B7280,color:#333
 
-1. **Clone** o repositório:
+    U((Usuários)):::user
 
-   ```bash
-   git clone https://github.com/GabrielGFC/restapi-cannays.git
-   cd restapi-cannays``
+    subgraph AWS["AWS sa-east-1"]
+        CF[CloudFront]:::spa
+        SPA["SPA Vue 3<br/>S3 estático"]:::spa
+        API["API Express<br/>ECS Fargate"]:::api
+        DB[("PostgreSQL<br/>RDS Multi-AZ")]:::data
+        SQS["SQS<br/>eventos"]:::async
+    end
 
-2. **Instale as dependências**:
+    SMTP[SES]:::ext
+    PAY[Gateway pagamento]:::ext
+    ANV[ANVISA]:::ext
 
-   ```bash
-   npm install
-   # ou
-   # yarn install
-   ```
-
-3. **Crie e preencha** seu arquivo de ambiente:
-
-    * Copie o exemplo:
-
-      ```bash
-      cp .env.example .env.development
-      ```
-
-    * Edite `.env.development` com seus próprios valores:
-
-      ```ini
-      # ── Servidor ─────────────────────────────────────────────────
-      PORT=5000
-      NODE_ENV=development
-      BASE_URL=http://localhost:5000
- 
-      # ── Banco de Dados ──────────────────────────────────────────
-      DB_DIALECT=postgres      # ex.: postgres, mysql, sqlite
-      DB_HOST=localhost
-      DB_PORT=5432
-      DB_USERNAME=seu_usuario_db
-      DB_PASSWORD=sua_senha_db
-      DB_NAME=seu_nome_db
- 
-      # ── JWT ──────────────────────────────────────────────────────
-      JWT_ACCESS_TOKEN_SECRET=sua_chave_secreta_jwt
-      JWT_EXPIRES_IN=1h
-      ```
-
-4. **(Opcional) Crie um `.env` global** se precisar de múltiplos ambientes (`.env.development`, `.env.test`, `.env.production`).
-   – Cada ambiente deve ter sua própria configuração (por exemplo, credenciais de BD diferentes).
-
----
-
-## 🏃 Executando o Servidor
-
-* **Modo de desenvolvimento** (com recarregamento automático via `ts-node-dev` ou `nodemon`):
-
-  ```bash
-  npm run dev
-  ```
-
-  Este script irá:
-
-    1. Compilar TypeScript na memória
-    2. Iniciar o servidor Express na porta `PORT` (padrão: 5000)
-    3. Observar mudanças (reinicia ao atualizar arquivos `.ts`)
-
-* **Modo de produção** (compilar → executar):
-
-  ```bash
-  npm run build
-  npm start
-  ```
-## 🛠 Scripts
-
-```jsonc
-{
-  "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
-
-    "lint": "eslint \"src/**/*.ts\"",
-    "lint:fix": "eslint \"src/**/*.ts\" --fix",
-
-    "migration:generate": "sequelize-cli migration:generate --config src/config/sequelizeConfig.js",
-    "migration:run": "sequelize-cli db:migrate --config src/config/sequelizeConfig.js",
-    "migration:undo": "sequelize-cli db:migrate:undo --config src/config/sequelizeConfig.js",
-
-    "test": "jest --runInBand",
-    "test:watch": "jest --watchAll",
-
-    "swagger:generate": "node src/utils/swagger.ts" // se tiver script personalizado para gerar docs do Swagger
-  }
-}
+    U --> CF --> SPA
+    SPA -->|REST /api| API
+    API --> DB
+    API --> SQS
+    SQS -.consumer.-> API
+    API --> SMTP
+    API --> PAY
+    API -.relatórios.-> ANV
 ```
 
----
+## Decisões arquiteturais (ADRs)
 
-## 📂 Estrutura do Projeto
+| ID                                                                 | Decisão                                                             |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------- |
+| [0001](docs/adrs/0001-monorepo-backend-frontend.md)                | Monorepo backend + frontend em `restapi-cannays`                    |
+| [0002](docs/adrs/0002-migracao-react-para-vue3.md)                 | Migração React → Vue 3 (Composition API)                            |
+| [0003](docs/adrs/0003-shadcn-vue-reka-ui.md)                       | shadcn-vue (Reka UI) + Tailwind como sistema de componentes         |
+| [0004](docs/adrs/0004-pinia-state-management.md)                   | Pinia (estado local) + TanStack Vue Query (server-state)            |
+| [0005](docs/adrs/0005-monolito-modular-bounded-contexts.md)        | Monolito modular por 6 bounded contexts                             |
+
+**Documento de Arquitetura de Software (SAD):** [docs/sad/sad.md](docs/sad/sad.md)
+**Diagramas Mermaid fonte:** [docs/diagrams/](docs/diagrams/)
+
+## Estrutura do repositório
 
 ```
-├── node_modules
-├── src
-│   ├── config
-│   │   ├── env.ts                 # Carrega e valida variáveis de ambiente
-│   │   └── sequelizeConfig.js     # Configuração do Sequelize CLI
-│   ├── database
-│   │   ├── migrations             # Arquivos de migração do Sequelize
-│   │   └── models                 # Definições de modelos Sequelize
-│   ├── docs                       # Arquivos YAML/JSON do Swagger (se separado)
-│   ├── interfaces                 # Interfaces e DTOs em TypeScript
-│   ├── logs                       # (Opcional) Pasta de logs (por exemplo, saída do morgan)
-│   ├── middleware                 # Middlewares do Express (ex.: autenticação, tratamento de erros)
-│   ├── modules                    # Módulos de funcionalidades (cada pasta contém repositório, serviço, controller, rotas, validadores)
-│   │   ├── auth
-│   │   ├── user
-│   │   └── ...
-│   ├── routes                     # Roteador principal que importa roteadores de módulos
-│   ├── types                      # Tipos customizados de TypeScript (ex.: extensões de `Express.Request`)
-│   ├── utils                      # Funções utilitárias (ex.: logger, formatação de erros, setup do Swagger)
-│   └── server.ts                  # Ponto de entrada da aplicação (configuração do Express + montagem de rotas)
-├── tests                          # Testes unitários/integrados (espelha `src/`)
-│   ├── middleware
-│   └── modules
-├── .env.example                   # Exemplo de variáveis de ambiente
-├── .eslintrc.js                   # Configuração do ESLint
-├── .prettierrc                    # Configuração do Prettier
-├── jest.config.js                 # Configuração do Jest
-├── package.json
-└── README.md
+restapi-cannays/
+├── src/                  ← Backend Node 20 + Express + Sequelize (auth, user, cultivo)
+├── frontend/             ← SPA Vue 3 + Vite + Pinia + vue-query + Tailwind + shadcn-vue
+├── docs/                 ← Dossiê arquitetural (ADRs, SAD, diagramas)
+└── gold-plating/         ← Terraform AWS, observability, chaos, runbook, DR, custos (planejado)
 ```
 
----
+## Run local
 
-## 🔧 Variáveis de Ambiente
+**Pré-requisitos:** Node ≥ 20, pnpm ≥ 9, Postgres 15+ rodando local ou Docker, `.env` em `src/config`.
 
-Use `.env.development`, `.env.test` e `.env.production` para manter variáveis separadas por ambiente. No mínimo, você deve fornecer:
+**Backend (porta 3000):**
 
-```ini
-# .env.example
-
-PORT=
-NODE_ENV=
-BASE_URL=
-
-# Banco de Dados
-DB_DIALECT=          # ex.: postgres, mysql, sqlite
-DB_HOST=
-DB_PORT=
-DB_USERNAME=
-DB_PASSWORD=
-DB_NAME=
-
-# JWT
-JWT_ACCESS_TOKEN_SECRET=
-JWT_EXPIRES_IN=      # ex.: '1h', '7d'
+```bash
+npm install
+npm run migration   # cria tabelas (uuid_ossp, users, cultivo_lotes)
+npm run dev
 ```
 
----
+**Frontend (porta 5173, proxy /api → 3000):**
 
-## 📄 Linting & Formatação
-
-* **Verificar erros de lint**:
-
-  ```bash
-  npm run lint
-  ```
-
-* **Auto-corrigir formatação**:
-
-  ```bash
-  npm run lint:fix
-  ```
-
-* **Prettier** está integrado via ESLint (veja `.eslintrc.js`).
-
----
-
-## 🛠 Sequelize & Migrações
-
-1. **Configure** `src/config/sequelizeConfig.js` (ou `.ts`) com as suas configurações de banco de dados (compatíveis com `.env.*`).
-
-2. **Gerar uma nova migração**:
-
-   ```bash
-   npm run migration:generate -- --name create_users_table
-   ```
-
-   > Note que é preciso usar `--` antes de `--name` quando executado via npm script.
-
-3. **Executar migrações pendentes**:
-
-   ```bash
-   npm run migration:run
-   ```
-
-4. **Reverter a última migração**:
-
-   ```bash
-   npm run migration:undo
-   ```
-
-Todos os arquivos de migração ficam em `src/database/migrations`, e os modelos em `src/database/models`.
-
----
-
-## 📚 Documentação da API (Swagger)
-
-* **Ponto de montagem**:
-  Por padrão, a interface Swagger UI estará disponível em:
-
-  ```
-  http://localhost:<PORT>/api-docs
-  ```
-
-* **Geração automática**:
-  As rotas são anotadas com comentários JSDoc no estilo Swagger. Ao inicializar o servidor, o JSON do Swagger é gerado automaticamente (via `swagger-jsdoc` ou um utilitário personalizado `swagger.ts`).
-
-    * Se precisar gerar manualmente o JSON, execute:
-
-      ```bash
-      npm run swagger:generate
-      ```
-
----
-
-## 🔒 Exemplo de Autenticação
-
-O módulo `auth` inclui:
-
-* **Cadastro** (`POST /api/auth/signup`)
-* **Login** (`POST /api/auth/signin`)
-* **Refresh de Token** (`POST /api/auth/refresh-token`)
-* Exemplo de rota protegida (ex.: `GET /api/user/profile`)
-
-Tokens JWT são assinados com `JWT_ACCESS_TOKEN_SECRET` e expiram de acordo com `JWT_EXPIRES_IN`.
-
----
-
-## 🧪 Testes
-
-* **Executar todos os testes**:
-
-  ```bash
-  npm run test
-  ```
-
-* **Executar apenas um arquivo de teste**:
-
-  ```bash
-  npm run test -- tests/modules/user/user.service.test.ts
-  ```
-
-Os testes usam **Jest** e estão localizados em `tests/`. Por padrão, apontam para um banco de dados de teste separado (configure `.env.test` conforme abaixo). Exemplo:
-
-```ini
-# .env.test
-NODE_ENV=test
-DB_DIALECT=sqlite
-DB_STORAGE=:memory:
-JWT_ACCESS_TOKEN_SECRET=test_jwt_secret
-JWT_EXPIRES_IN=1m
+```bash
+cd frontend
+pnpm install
+pnpm exec playwright install   # uma vez
+pnpm dev
 ```
+
+Endpoints úteis: `GET http://localhost:3000/auth/health`, `POST /auth/login`, `GET /cultivo` (JWT).
+
+## Decisão arquitetural central desta fase
+
+**Monolito modular por bounded contexts** ([ADR 0005](docs/adrs/0005-monolito-modular-bounded-contexts.md)) — entrega tempo-ao-mercado com 5 devs, preservando o caminho para microsserviços via fronteiras `modules/<contexto>/`. Combinado com **migração para Vue 3** ([ADR 0002](docs/adrs/0002-migracao-react-para-vue3.md)) que unifica o stack do time.
+
+## Referências
+
+- Bass, Clements, Kazman — *Software Architecture in Practice*, 4ª ed.
+- Martin — *Clean Architecture*
+- Newman — *Building Microservices*, 2ª ed.
+- Nygard — *Release It!*, 2ª ed.
+- ISO/IEC 25010:2011
+- AWS Well-Architected Framework · C4 Model · WCAG 2.1 AA
+- ANVISA RDC 327/2019 · LGPD Lei 13.709/2018

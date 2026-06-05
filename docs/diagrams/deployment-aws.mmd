@@ -1,0 +1,55 @@
+%% Deployment — AWS sa-east-1
+graph TB
+    classDef vpc fill:#F3F4F6,stroke:#374151,color:#111
+    classDef public fill:#D6EAD8,stroke:#1A5C38,color:#1A5C38
+    classDef private fill:#2E7D4F,stroke:#1A5C38,color:#fff
+    classDef data fill:#F59E0B,stroke:#B45309,color:#fff
+    classDef edge fill:#1A5C38,stroke:#0E3E26,color:#fff
+
+    Internet((Internet))
+    R53[Route 53]:::edge
+    CF[CloudFront + WAF]:::edge
+    S3SPA[(S3 cannasys-spa<br/>SPA estática)]:::data
+
+    Internet --> R53
+    R53 --> CF
+    CF --> S3SPA
+
+    subgraph VPC["VPC 10.0.0.0/16"]
+      direction TB
+
+      subgraph PUB["Public subnets (2 AZs)"]
+        ALB[ALB]:::public
+      end
+
+      subgraph PRIV["Private subnets (2 AZs)"]
+        ECS1[ECS Fargate task AZ-a]:::private
+        ECS2[ECS Fargate task AZ-b]:::private
+      end
+
+      subgraph DBSN["DB subnets (2 AZs)"]
+        RDSP[(RDS Postgres primary AZ-a)]:::data
+        RDSS[(RDS standby AZ-b)]:::data
+      end
+    end
+
+    CF -->|/api/*| ALB
+    ALB --> ECS1
+    ALB --> ECS2
+    ECS1 --> RDSP
+    ECS2 --> RDSP
+    RDSP -.sync.-> RDSS
+
+    S3DOC[(S3 cannasys-docs)]:::data
+    SQS[SQS cannasys-events]:::edge
+    SES[SES]:::edge
+    CW[CloudWatch + Alarms]:::edge
+
+    ECS1 --> S3DOC
+    ECS2 --> S3DOC
+    ECS1 --> SQS
+    ECS2 --> SQS
+    ECS1 --> SES
+    ECS2 --> SES
+    ECS1 -.métricas.-> CW
+    ECS2 -.métricas.-> CW
