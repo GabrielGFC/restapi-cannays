@@ -1,0 +1,52 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: cannasys-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: cannasys
+      POSTGRES_PASSWORD: cannasys_dev
+      POSTGRES_DB: cannasys_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - cannasys_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cannasys -d cannasys_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cannasys-api
+    restart: unless-stopped
+    env_file:
+      - .env.development
+    environment:
+      DB_HOST: postgres
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src:/app/src
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cannasys-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - backend
+
+volumes:
+  cannasys_pgdata:

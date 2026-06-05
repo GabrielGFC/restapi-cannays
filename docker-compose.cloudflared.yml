@@ -1,16 +1,19 @@
 services:
-    tunnel-api:
-        image: cloudflare/cloudflared:latest
-        container_name: cannasys-tunnel-api
-        restart: unless-stopped
-        command: tunnel --no-autoupdate --url http://host.docker.internal:3000
-        extra_hosts:
-            - host.docker.internal:host-gateway
+  tunnel-api:
+    image: cloudflare/cloudflared:latest
+    container_name: cannasys-tunnel-api
+    restart: unless-stopped
+    command: tunnel --no-autoupdate --url http://cannasys-api:5000
+    networks:
+      - restapi-cannays_default
+  tunnel-frontend:
+    image: cloudflare/cloudflared:latest
+    container_name: cannasys-tunnel-frontend
+    restart: unless-stopped
+    command: tunnel --no-autoupdate --url http://cannasys-frontend:5173
+    networks:
+      - restapi-cannays_default
 
-    tunnel-frontend:
-        image: cloudflare/cloudflared:latest
-        container_name: cannasys-tunnel-frontend
-        restart: unless-stopped
-        command: tunnel --no-autoupdate --url http://host.docker.internal:5173
-        extra_hosts:
-            - host.docker.internal:host-gateway
+networks:
+  restapi-cannays_default:
+    external: true
