@@ -6,22 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7e10774b-e3ff-4e65-ab75-098f8faed7c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/styles/theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/styles/theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/AppShell.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/AppShell.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/MainSidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/layout/MainSidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Button.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Button.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Card.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Card.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Input.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Input.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/KpiCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/KpiCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Table.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ui/Table.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/stores/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/auth/LoginView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/auth/LoginView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/auth/RegisterView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/auth/RegisterView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/configuracoes/ConfiguracoesView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/configuracoes/ConfiguracoesView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/dashboard/DashboardView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/dashboard/DashboardView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/rh/MembrosListView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/rh/MembrosListView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/tailwind.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/auth/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/interacao/interacao.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/interacao/interacao.routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/producao/producao.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/producao/producao.routes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/rh/rh.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/rh/rh.routes.ts" afterDir="false" />
@@ -67,28 +52,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.preferred.runtime.type.id": "node",
-    "last_opened_file_path": "C:/Users/gabriel.carvalho/Documents/GitHub/restapi-cannays",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.sync",
-    "ts.external.directory.path": "D:\\Users\\gabriel.carvalho\\Documents\\GitHub\\restapi-cannays\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/gabriel.carvalho/Documents/GitHub/restapi-cannays&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Users\\gabriel.carvalho\\Documents\\GitHub\\restapi-cannays\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Documents\GitHub\restapi-cannays" />
@@ -123,7 +108,8 @@
       <workItem from="1748984098624" duration="2421000" />
       <workItem from="1749057730603" duration="232000" />
       <workItem from="1749156637024" duration="2049000" />
-      <workItem from="1780668430217" duration="9210000" />
+      <workItem from="1780668430217" duration="10134000" />
+      <workItem from="1780932211548" duration="124000" />
     </task>
     <servers />
   </component>

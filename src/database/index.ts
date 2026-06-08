@@ -2,6 +2,10 @@ import logger from '@/utils/logger';
 import Sequelize from 'sequelize';
 import userModel from './models/user.model';
 import cultivoLoteModel from './models/cultivo.model';
+import membroModel from './models/membro.model';
+import producaoModel from './models/producao.model';
+import frascoModel from './models/frasco.model';
+import receitaModel from './models/receita.model';
 import {
     DB_DIALECT,
     DB_HOST,
@@ -44,6 +48,10 @@ sequelize.authenticate();
 export const DB = {
     Users: userModel(sequelize),
     CultivoLotes: cultivoLoteModel(sequelize),
+    Membros: membroModel(sequelize),
+    Producoes: producaoModel(sequelize),
+    Frascos: frascoModel(sequelize),
+    Receitas: receitaModel(sequelize),
     sequelize, // connection instance (RAW queries)
     Sequelize, // library
 };
