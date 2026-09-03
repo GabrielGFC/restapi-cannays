@@ -21,5 +21,11 @@ export const useRhStore = defineStore('rh', () => {
         }
     }
 
-    return { membros, loading, error, fetchAll };
+    async function create(payload: Partial<Membro>) {
+        const { data } = await api.post('/rh/membros', payload);
+        membros.value.unshift(data.data);
+        return data.data;
+    }
+
+    return { membros, loading, error, fetchAll, create };
 });

@@ -28,6 +28,10 @@ export default defineConfig({
         host: true,
         port: 5173,
         allowedHosts: ['.trycloudflare.com'],
+        watch: {
+            usePolling: true,
+            ignored: ['**/node_modules/**', '**/auto-imports.d.ts', '**/components.d.ts'],
+        },
         proxy: {
             '/api': {
                 target: process.env.VITE_API_URL || 'http://backend:5000',

@@ -29,6 +29,15 @@ appServer.use((req, res, next) => {
         } else {
             logger.info(message);
         }
+
+        if (req.method !== 'GET' && req.method !== 'OPTIONS' && !req.originalUrl.startsWith('/api-docs')) {
+            DB.AuditLogs.create({
+                user_id: req.context?.userId ?? null,
+                method: req.method,
+                path: req.originalUrl,
+                status_code: res.statusCode,
+            }).catch(() => { /* audit log is best-effort */ });
+        }
     });
 
     next();

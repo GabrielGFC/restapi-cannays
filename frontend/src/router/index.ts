@@ -44,6 +44,11 @@ const routes: RouteRecordRaw[] = [
                 component: () => import('@/views/producao/ProducoesView.vue'),
             },
             {
+                path: 'producao/nova',
+                name: 'producao.new',
+                component: () => import('@/views/producao/ProducaoFormView.vue'),
+            },
+            {
                 path: 'producao/estoque',
                 name: 'producao.estoque',
                 component: () => import('@/views/producao/EstoqueOleoView.vue'),
@@ -57,6 +62,11 @@ const routes: RouteRecordRaw[] = [
                 path: 'interacao',
                 name: 'interacao.fila',
                 component: () => import('@/views/interacao/FilaValidacaoView.vue'),
+            },
+            {
+                path: 'interacao/nova',
+                name: 'interacao.new',
+                component: () => import('@/views/interacao/ReceitaFormView.vue'),
             },
             {
                 path: 'interacao/receita/:id',
@@ -87,6 +97,41 @@ const routes: RouteRecordRaw[] = [
                 path: 'configuracoes',
                 name: 'configuracoes',
                 component: () => import('@/views/configuracoes/ConfiguracoesView.vue'),
+            },
+            {
+                path: 'configuracoes/associacao',
+                name: 'configuracoes.associacao',
+                component: () => import('@/views/configuracoes/AssociacaoView.vue'),
+            },
+            {
+                path: 'configuracoes/usuarios',
+                name: 'configuracoes.usuarios',
+                component: () => import('@/views/configuracoes/UsuariosView.vue'),
+            },
+            {
+                path: 'configuracoes/permissoes',
+                name: 'configuracoes.permissoes',
+                component: () => import('@/views/configuracoes/PermissoesView.vue'),
+            },
+            {
+                path: 'configuracoes/notificacoes',
+                name: 'configuracoes.notificacoes',
+                component: () => import('@/views/configuracoes/NotificacoesView.vue'),
+            },
+            {
+                path: 'configuracoes/integracoes',
+                name: 'configuracoes.integracoes',
+                component: () => import('@/views/configuracoes/IntegracoesView.vue'),
+            },
+            {
+                path: 'configuracoes/auditoria',
+                name: 'configuracoes.auditoria',
+                component: () => import('@/views/configuracoes/LogsAuditoriaView.vue'),
+            },
+            {
+                path: 'configuracoes/seguranca',
+                name: 'configuracoes.seguranca',
+                component: () => import('@/views/configuracoes/SegurancaView.vue'),
             },
         ],
     },

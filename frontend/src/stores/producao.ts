@@ -27,5 +27,11 @@ export const useProducaoStore = defineStore('producao', () => {
         frascos.value = data.data;
     }
 
-    return { producoes, frascos, loading, error, fetchProducoes, fetchEstoque };
+    async function create(payload: Partial<ProducaoOleo>) {
+        const { data } = await api.post('/producao', payload);
+        producoes.value.unshift(data.data);
+        return data.data;
+    }
+
+    return { producoes, frascos, loading, error, fetchProducoes, fetchEstoque, create };
 });

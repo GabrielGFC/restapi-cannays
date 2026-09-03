@@ -6,6 +6,11 @@ import membroModel from './models/membro.model';
 import producaoModel from './models/producao.model';
 import frascoModel from './models/frasco.model';
 import receitaModel from './models/receita.model';
+import associacaoModel from './models/associacao.model';
+import permissaoModel from './models/permissao.model';
+import auditLogModel from './models/auditlog.model';
+import notificacaoModel from './models/notificacao.model';
+import integracaoModel from './models/integracao.model';
 import {
     DB_DIALECT,
     DB_HOST,
@@ -52,6 +57,11 @@ export const DB = {
     Producoes: producaoModel(sequelize),
     Frascos: frascoModel(sequelize),
     Receitas: receitaModel(sequelize),
+    Associacao: associacaoModel(sequelize),
+    Permissoes: permissaoModel(sequelize),
+    AuditLogs: auditLogModel(sequelize),
+    NotificacaoRegras: notificacaoModel(sequelize),
+    Integracoes: integracaoModel(sequelize),
     sequelize, // connection instance (RAW queries)
     Sequelize, // library
 };

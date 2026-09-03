@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: cannasys_dev
       POSTGRES_DB: cannasys_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - cannasys_pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -32,6 +32,7 @@ services:
     volumes:
       - ./src:/app/src
       - ./.env.development:/app/.env.development:ro
+      - ./nodemon.json:/app/nodemon.json:ro
     depends_on:
       postgres:
         condition: service_healthy
@@ -46,6 +47,7 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend/src:/app/src
+      - ./frontend/vite.config.ts:/app/vite.config.ts:ro
     depends_on:
       - backend
 

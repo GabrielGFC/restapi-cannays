@@ -10,6 +10,7 @@ import EmptyState from '@/components/shared/EmptyState.vue';
 import StatusBadge from '@/components/shared/StatusBadge.vue';
 import Table from '@/components/ui/Table.vue';
 import Button from '@/components/ui/Button.vue';
+import { Plus } from 'lucide-vue-next';
 import { STATUS_RECEITA } from '@/config/constants';
 
 const router = useRouter();
@@ -20,7 +21,7 @@ onMounted(() => store.fetchFila());
 
 const columns = [
     { key: 'id', label: 'Receita' },
-    { key: 'paciente_id', label: 'Paciente' },
+    { key: 'paciente_nome', label: 'Paciente' },
     { key: 'created_at', label: 'Emitida em' },
     { key: 'status', label: 'Status' },
     { key: 'actions', label: '' },
@@ -37,10 +38,22 @@ function variantFor(value: string) {
 </script>
 
 <template>
-    <PageHeader title="Fila de validação" subtitle="Receitas aguardando revisão" />
+    <PageHeader title="Fila de validação" subtitle="Receitas aguardando revisão">
+        <template #actions>
+            <Button color="primary" @click="router.push('/interacao/nova')">
+                <template #leading><Plus :size="16" /></template>
+                Nova receita
+            </Button>
+        </template>
+    </PageHeader>
     <LoadingState v-if="loading" />
     <ErrorState v-else-if="error" :message="error" @retry="store.fetchFila()" />
-    <EmptyState v-else-if="!fila.length" title="Nenhuma receita pendente" />
+    <EmptyState
+        v-else-if="!fila.length"
+        title="Nenhuma receita pendente"
+        action-label="Nova receita"
+        @action="router.push('/interacao/nova')"
+    />
     <Table v-else :columns="columns" :rows="fila">
         <template #cell.status="{ value }">
             <StatusBadge :variant="variantFor(value as string)" :label="String(value)" />
